@@ -1,0 +1,24 @@
+view "externa" {
+	match-clientes { 200.241.190.0/24; }
+	recursion no;
+	zone "lucas_20172380020.com.br" {
+		type master;
+		file "/etc/bind/minhas_zonas/db.192";
+		allow-transfer{ 201.89.45.2; };
+	};
+	zone "0.168.192.in-addr.arpa" {
+		type master;
+		file "/etc/bind/minhas_zonas/db.192";
+		allow-transfer { 201.89.45.2; };
+	};
+};
+
+view "intera" {
+	match-clients { 192.168.0.0/24; };
+	recursion yes;
+	zone "lucas_20172380020.com.br" {
+		type master;
+		file "/etc/bind/minhas_zonas/db.lucas";
+		allow-transfer { none; };
+	};
+};
